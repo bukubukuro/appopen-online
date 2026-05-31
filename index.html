@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>appopen.online | Ultra-Light Tent Select</title>
+    <title>appopen.online | UL Tent & Campsite</title>
     <style>
-        /* ベーススタイル */
+        /* カラーパレット & 基本設定 */
         :root {
-            --bg-color: #f9f9f6;
-            --text-color: #2c302e;
-            --accent-color: #5b7065;
+            --bg-color: #faf9f6;
+            --text-main: #2d312e;
+            --accent-green: #4a5d4e;
+            --accent-orange: #d97736;
             --card-bg: #ffffff;
+            --border-color: #e5e5e0;
         }
 
         body {
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-main);
             line-height: 1.6;
             margin: 0;
             padding: 0;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -31,8 +33,7 @@
         /* ヘッダー */
         header {
             background-color: var(--card-bg);
-            border-bottom: 1px solid #e6e6e2;
-            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -42,42 +43,60 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 20px;
         }
 
-        header h1 {
+        .logo {
             font-size: 1.4rem;
-            margin: 0;
+            font-weight: 700;
             letter-spacing: 0.05em;
         }
 
-        header h1 a {
-            color: var(--text-color);
+        .logo a {
+            color: var(--text-main);
             text-decoration: none;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--accent-green);
         }
 
         /* ヒーローセクション */
         .hero {
             text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(rgba(249, 249, 246, 0.8), rgba(249, 249, 246, 0.9)), 
-                        url('https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
-            margin-bottom: 40px;
+            padding: 100px 20px;
+            background: linear-gradient(rgba(250, 249, 246, 0.85), rgba(250, 249, 246, 0.95)), 
+                        url('https://images.unsplash.com/photo-1464547323744-4edd0cd0c746?auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
+            margin-bottom: 60px;
         }
 
         .hero h2 {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             margin-bottom: 15px;
             font-weight: 700;
+            color: var(--accent-green);
         }
 
         .hero p {
             font-size: 1.1rem;
-            color: #606662;
             max-width: 600px;
             margin: 0 auto;
+            color: #555;
         }
 
-        /* コンテンツセクション */
+        /* セクション共通 */
+        section {
+            margin-bottom: 70px;
+        }
+
         .section-title {
             text-align: center;
             font-size: 1.8rem;
@@ -88,25 +107,24 @@
         .section-title::after {
             content: '';
             display: block;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent-color);
-            margin: 10px auto 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-green);
+            margin: 12px auto 0;
         }
 
-        /* テントカードグリッド */
+        /* グリッドレイアウト */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
         }
 
         .card {
             background-color: var(--card-bg);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             transition: transform 0.3s ease;
         }
 
@@ -116,53 +134,93 @@
 
         .card-img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            background-color: #e6e6e2;
         }
 
-        .card-content {
+        .card-body {
             padding: 25px;
         }
 
-        .card-tag {
+        .tag {
             display: inline-block;
-            background-color: #f0f2f0;
-            color: var(--accent-color);
             font-size: 0.75rem;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-bottom: 10px;
             font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 12px;
         }
+
+        .tag-gear { background-color: #edf4ee; color: var(--accent-green); }
+        .tag-camp { background-color: #fbf0e8; color: var(--accent-orange); }
 
         .card-title {
             font-size: 1.3rem;
             margin: 0 0 10px 0;
         }
 
-        .card-specs {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0 0 0;
-            border-top: 1px solid #f0f2f0;
-            padding-top: 15px;
-            font-size: 0.9rem;
-            color: #606662;
+        .card-text {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 15px;
         }
 
-        .card-specs li {
-            margin-bottom: 5px;
+        /* 販売用スペック・価格 */
+        .price-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .btn {
+            background-color: var(--accent-green);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #3b4b3f;
+        }
+
+        /* キャンプ場特有の情報 */
+        .camp-info {
+            font-size: 0.85rem;
+            color: #666;
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
         }
 
         /* フッター */
         footer {
-            background-color: #2c302e;
-            color: #a4a8a5;
+            background-color: #222523;
+            color: #a0a5a1;
             text-align: center;
-            padding: 30px 0;
+            padding: 40px 0;
             font-size: 0.85rem;
-            margin-top: 60px;
+        }
+
+        /* レスポンシブ調整 */
+        @media (max-width: 600px) {
+            .hero h2 { font-size: 2rem; }
+            header .container { flex-direction: column; gap: 10px; }
+            nav a { margin: 0 10px; }
         }
     </style>
 </head>
@@ -170,62 +228,88 @@
 
     <header>
         <div class="container">
-            <h1><a href="#">appopen.online</a></h1>
+            <div class="logo"><a href="#">appopen.online</a></div>
+            <nav>
+                <a href="#gears">UL Tents</a>
+                <a href="#campsites">Campsites</a>
+            </nav>
         </div>
     </header>
 
     <section class="hero">
-        <h2>Go Light, Go Anywhere.</h2>
-        <p>1gの軽量化が、あなたの旅をより遠くへ、より自由にする。厳選されたウルトラライト（UL）テントコレクション。</p>
+        <h2>Lighten Your Pack. Expand Your Horizon.</h2>
+        <p>山を身軽に旅するための厳選されたウルトラライトギアと、ULハイカーの精神を満たす極上のキャンプフィールドをご提案します。</p>
     </section>
 
-    <main class="container">
-        <h3 class="section-title">Featured UL Tents</h3>
-        
-        <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=600&q=80" alt="Zero-G Solo" class="card-img">
-                <div class="card-content">
-                    <span class="card-tag">シェルター / 非自立式</span>
-                    <h4 class="card-title">Zero-G Solo Shelter</h4>
-                    <p>トレッキングポール1本で設営可能な、ULハイカーの定番スタイル。DCF（キューベンファイバー）を採用し、圧倒的な軽さと防水性を両立。</p>
-                    <ul class="card-specs">
-                        <li><strong>重量:</strong> 390g (本体のみ)</li>
-                        <li><strong>定員:</strong> 1名</li>
-                        <li><strong>素材:</strong> 0.55 oz DCF</li>
-                    </ul>
-                </div>
-            </div>
+    <div class="container">
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1537905569824-f89f14cceb68?auto=format&fit=crop&w=600&q=80" alt="Horizon 2P" class="card-img">
-                <div class="card-content">
-                    <span class="card-tag">ダブルウォール / 半自立式</span>
-                    <h4 class="card-title">Horizon 2P Light</h4>
-                    <p>居住性を妥協したくないペアハイカーへ。最小限のフレームワークで最大の内部空間を確保した、2人用ULテントの決定版。</p>
-                    <ul class="card-specs">
-                        <li><strong>重量:</strong> 740g</li>
-                        <li><strong>定員:</strong> 2名</li>
-                        <li><strong>素材:</strong> 10D リップストップナイロン</li>
-                    </ul>
+        <section id="gears">
+            <h3 class="section-title">Ultra-Light Tents</h3>
+            <div class="grid">
+                
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=600&q=80" alt="Aero Shelter 1P" class="card-img">
+                    <div class="card-body">
+                        <span class="tag tag-gear">DCF / 非自立式</span>
+                        <h4 class="card-title">Aero Shelter 1P</h4>
+                        <p class="card-text">重量わずか340g。最高峰の防水透湿性と耐風性を備えた、1分で設営可能なワンポールミニマルシェルター。</p>
+                        <div class="price-box">
+                            <span class="price">¥68,000</span>
+                            <a href="#" class="btn">カートに入れる</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1478838068381-834f434d3c62?auto=format&fit=crop&w=600&q=80" alt="Bivy Dome" class="card-img">
-                <div class="card-content">
-                    <span class="card-tag">ビィフィ / 超軽量</span>
-                    <h4 class="card-title">Minimalist Bivy Dome</h4>
-                    <p>天候の急変にも耐える、ミニマリストのためのドーム型シェルター。ファストパッキングや alpine スタイルに最適。</p>
-                    <ul class="card-specs">
-                        <li><strong>重量:</strong> 280g</li>
-                        <li><strong>定員:</strong> 1名</li>
-                        <li><strong>素材:</strong> 透湿防水ミニマリストメッシュ & ナイロン</li>
-                    </ul>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1537905569824-f89f14cceb68?auto=format&fit=crop&w=600&q=80" alt="Horizon Dome 2P" class="card-img">
+                    <div class="card-body">
+                        <span class="tag tag-gear">10D ナイロン / 半自立式</span>
+                        <h4 class="card-title">Horizon Dome 2P</h4>
+                        <p class="card-text">居住空間を最大限に広げた2人用軽量テント。日本の厳しいアルプス環境の稜線でも安定する絶妙なフレームワーク。</p>
+                        <div class="price-box">
+                            <span class="price">¥54,500</span>
+                            <a href="#" class="btn">カートに入れる</a>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-        </div>
-    </main>
+        </section>
+
+        <section id="campsites">
+            <h3 class="section-title">Recommended Campsites</h3>
+            <div class="grid">
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1478838068381-834f434d3c62?auto=format&fit=crop&w=600&q=80" alt="星降る尾根キャンプ場" class="card-img">
+                    <div class="card-body">
+                        <span class="tag tag-camp">標高 1,500m / バックパッカー向け</span>
+                        <h4 class="card-title">星降る尾根キャンプ場</h4>
+                        <p class="card-text">車でのアクセス不可。数時間のハイクアップを経て辿り着く、ULハイカーのための天空のキャンプ指定地。見渡す限りの雲海が広がります。</p>
+                        <ul class="camp-info">
+                            <li><strong>アクセス:</strong> 登山口より徒歩3時間</li>
+                            <li><strong>ロケーション:</strong> 尾根・パノラマビュー</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1487730116645-74489c95b41b?auto=format&fit=crop&w=600&q=80" alt="清流と苔の森キャンプサイト" class="card-img">
+                    <div class="card-body">
+                        <span class="tag tag-camp">完全予約制 / 直火不可</span>
+                        <h4 class="card-title">清流と苔の森キャンプサイト</h4>
+                        <p class="card-text">手つかずの原生林と美しい沢に囲まれた秘密基地。最低限の設備のみで、タープやULテントのステルス設営が最高に映える上級者好みの環境です。</p>
+                        <ul class="camp-info">
+                            <li><strong>アクセス:</strong> 最寄り林道から徒歩15分</li>
+                            <li><strong>ロケーション:</strong> 渓流・森林</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
 
     <footer>
         <p>&copy; 2026 appopen.online. All rights reserved.</p>
