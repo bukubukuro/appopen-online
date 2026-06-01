@@ -19,7 +19,7 @@
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.7;
             margin: 0;
             padding: 0;
         }
@@ -72,14 +72,13 @@
         /* ヒーローセクション */
         .hero {
             text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(rgba(250, 249, 246, 0.85), rgba(250, 249, 246, 0.95)), 
+            padding: 120px 20px;
+            background: linear-gradient(rgba(250, 249, 246, 0.8), rgba(250, 249, 246, 0.9)), 
                         url('https://images.unsplash.com/photo-1464547323744-4edd0cd0c746?auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
-            margin-bottom: 60px;
         }
 
         .hero h2 {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             margin-bottom: 15px;
             font-weight: 700;
             color: var(--accent-green);
@@ -94,12 +93,13 @@
 
         /* セクション共通 */
         section {
-            margin-bottom: 70px;
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .section-title {
             text-align: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 40px;
             position: relative;
         }
@@ -111,6 +111,40 @@
             height: 3px;
             background-color: var(--accent-green);
             margin: 12px auto 0;
+        }
+
+        /* コンセプトセクション（ボリューム大） */
+        .concept-section {
+            background-color: #f1f0ea;
+            padding: 90px 20px;
+        }
+
+        .concept-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .concept-lead {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--accent-green);
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .concept-body p {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 25px;
+        }
+
+        .concept-quote {
+            border-left: 4px solid var(--accent-green);
+            padding-left: 20px;
+            margin: 40px 0;
+            font-style: italic;
+            color: #555;
         }
 
         /* グリッドレイアウト */
@@ -165,7 +199,7 @@
             margin-bottom: 15px;
         }
 
-        /* 販売用スペック・価格 */
+        /* 価格 & ボタン */
         .price-box {
             display: flex;
             justify-content: space-between;
@@ -196,7 +230,7 @@
             background-color: #3b4b3f;
         }
 
-        /* キャンプ場特有の情報 */
+        /* キャンプ場スペック */
         .camp-info {
             font-size: 0.85rem;
             color: #666;
@@ -205,6 +239,40 @@
             margin: 10px 0 0 0;
             border-top: 1px solid var(--border-color);
             padding-top: 15px;
+        }
+
+        /* ショップ／インフォメーション情報 */
+        .info-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 40px;
+            margin-top: 20px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .info-item h4 {
+            margin: 0 0 10px 0;
+            color: var(--accent-green);
+            font-size: 1.1rem;
+        }
+
+        .info-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .tel-link {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--accent-orange);
+            text-decoration: none;
         }
 
         /* フッター */
@@ -221,6 +289,7 @@
             .hero h2 { font-size: 2rem; }
             header .container { flex-direction: column; gap: 10px; }
             nav a { margin: 0 10px; }
+            .info-box { padding: 20px; }
         }
     </style>
 </head>
@@ -230,15 +299,40 @@
         <div class="container">
             <div class="logo"><a href="#">appopen.online</a></div>
             <nav>
+                <a href="#concept">Concept</a>
                 <a href="#gears">UL Tents</a>
                 <a href="#campsites">Campsites</a>
+                <a href="#about">Access/Contact</a>
             </nav>
         </div>
     </header>
 
     <section class="hero">
         <h2>Lighten Your Pack. Expand Your Horizon.</h2>
-        <p>山を身軽に旅するための厳選されたウルトラライトギアと、ULハイカーの精神を満たす極上のキャンプフィールドをご提案します。</p>
+        <p>1gを削る情熱が、あなたをまだ見ぬ絶景へと連れ出す。</p>
+    </section>
+
+    <section id="concept" class="concept-section">
+        <div class="concept-wrapper">
+            <h3 class="section-title">Concept</h3>
+            <div class="concept-lead">
+                「Less is More ── 削ぎ落とした先にある、豊かさ」
+            </div>
+            <div class="concept-body">
+                <p>
+                    ウルトラライト（UL）ハイキングの本質は、単に荷物を軽くすることだけではありません。それは、自分にとって「本当に必要なもの」を見極め、自然との境界線を限りなく無くしていくプロセスです。重いバックパックから解放されたとき、あなたの足取りは軽くなり、五感はひらかれ、目の前のトレイルや風の音により深く没入できるようになります。
+                </p>
+                <p>
+                    私たち <strong>appopen.online</strong> は、妥協のない軽量性と過酷な環境に耐えうる強度を両立した、世界の最先端ULテントをセレクトして販売しています。
+                </p>
+                <div class="concept-quote">
+                    「家を背負って歩くのではない。自然の懐に、静かに身を滑り込ませるのだ。」
+                </div>
+                <p>
+                    さらに、私たちが提案するのは道具だけではありません。その軽量ギアのポテンシャルを最大限に発揮し、静寂な夜を過ごすための「特別なキャンプフィールド」も併せてご紹介しています。荷物をミニマムに抑え、自由を手に入れたハイカーたちが最後に集う場所。自然へのインパクトを最小限に抑え（Leave No Trace）、深い星空と一体になる至高の体験をここから始めましょう。
+                </p>
+            </div>
+        </div>
     </section>
 
     <div class="container">
@@ -306,6 +400,28 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <section id="about" style="border-bottom: none;">
+            <h3 class="section-title">Shop Info & Reservation</h3>
+            <div class="info-box">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h4>appopen.online ベースベース</h4>
+                        <p>〒390-1520</p>
+                        <p>長野県松本市安曇上高地 999-5</p>
+                        <p style="font-size: 0.85rem; color: #777; margin-top: 5px;">※北アルプスの麓にあるULギア専門のショールーム兼キャンプ場総合受付です。</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>キャンプ場のご予約・お問い合わせ</h4>
+                        <p>お電話での仮予約・空き状況確認はこちら</p>
+                        <p style="margin-top: 8px;">
+                            <a href="tel:03-1234-5678" class="tel-link">0120-999-888</a>
+                        </p>
+                        <p style="font-size: 0.85rem; color: #777; margin-top: 5px;">受付時間: 平日 10:00 〜 17:00</p>
+                    </div>
+                </div>
             </div>
         </section>
 
